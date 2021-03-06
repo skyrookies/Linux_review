@@ -4,11 +4,16 @@
 
 ## dayone：
 
-1. 学习使用typora，了解markdown,方便之后笔记记录
+### 1、学习使用typora，了解markdown,方便之后笔记记录
 
-   用时1h
-
-   ![image-20210305213046603](G:\linux_review\image-20210305213046603.png)
+用时1h
 
 
 
+## daytwo
+
+### 1、读书《鸟哥的Linux私房菜》 基础知识部分 1h
+
+### 2、由于截图问题，尝试实体机putty连接虚拟机kali ssh 1h 
+
+结果还是不错，详见daytwo
