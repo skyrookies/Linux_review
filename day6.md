@@ -16,7 +16,7 @@ Linux 正统文件系统为Ext2(Linux second extended file system)
 
 文件系统将两部分参数（文件权限与文件属性）分别放置不同区块。权限与属性放置inode。实体数据放置 data block，superlock超级区块记录文件系统整体信息，包括inode、block 总量、使用量、剩余量等
 
-​	
+​	问题：格式化慢
 
 ```
 superblock:记录此 filesystem 的整体信息，包括 inode/block 的总量、使用量、剩余量，以及文件系统的格式与相关信息等;
@@ -76,6 +76,8 @@ dumpe2fs [-bh] nameofdev
 
 #### 查看当前linux 文件系统 df -T
 
+### 日志式文件系统的出现是为了简化数据一致性检查
+
 ### XFS  一种日志式文件系统
 
 #### data dection 资料区
@@ -91,3 +93,55 @@ dumpe2fs [-bh] nameofdev
 有文件要被建立时，xfs 会在这个区段里面找一个到数个的 extent 区块，将文件放置在这个区 块内，等到分配完毕后，再写入到 data section 的 inode 与 block 去
 
 #### xfs_info XFS 文件系统的描述数据观察
+
+## Linux异步处理  asynchronously
+
+常用文件数据放入内存，加速读写，若内存中的文件数据被更改，进行标记。不定时将标记内存数据写入磁盘，保持磁盘与内存数据一致性。
+
+## mount point
+
+可用 ls -ild 查看inode
+
+#### df命令查看磁盘整体使用情况
+
+#### du评估文件系统的磁盘使用量
+
+/proc 为linux系统加载的系统数据，且是挂在内存中的
+
+/dev/shm内存虚拟的磁盘空间
+
+#### ln hard link/symbolic link
+
+##### hard link		ln 不加参数
+
+硬链接实际为链接到某inode号码的关联记录  	既不增加inode 也不号用block
+
+不能跨filesystem
+
+不能link目录
+
+##### sysbomlic link
+
+ln -s  可连接目录 相当快捷方式
+
+## 磁盘的分区、格式化、校验和挂载
+
+lsblk查看所有磁盘状态
+
+gdisk/fdisk 进行磁盘分区
+
+mkfs 磁盘格式化（建立文件系统）
+
+xfs_repair 文件系统校验
+
+fsck 
+
+mount / umount 挂载与解除
+
+![image-20210312220221362](G:\linux_review\image-20210312220221362.png)
+
+### 开机挂载
+
+/etc/fstab
+
+/etc/mtab
