@@ -157,4 +157,63 @@ unset取消变量
 
 注意：无论执行结果正确或错误 若不进行重定向，显示屏均会有
 
-P473
+#### pipe 管道
+
+注意：
+
+管线命令仅会处理standard output，对于standard error output会予以忽略
+管线命令必须要能够接受来自前一个指令的数据成为standard input 继续处理才行。
+
+##### cut grep
+
+![image-20210314124156406](G:\linux_review\image-20210314124156406.png)
+
+grep [-acinv]  'matchstring' filename
+
+```
+-a:	将binary文件以text文件的方式搜寻数据:
+-c:	计算找到'搜寻字符串′的次数
+-i:	忽略大小写的不同，所以大小写视为相同
+-n:	顺便输出行号
+-v:	反向选择，亦即显示出没有'搜寻字符串′内容的那一行!
+--color=auto :可以将找到的关键词部分加上颜色的显示喔!
+```
+
+##### 排序指令sort wc uniq
+
+![image-20210314125447596](G:\linux_review\image-20210314125447596.png)
+
+![image-20210314130014915](G:\linux_review\image-20210314130014915.png)
+
+```
+wc [-lwm]
+-l 仅列出行
+-w 仅列出多少字
+-m 多少字符
+```
+
+![image-20210314130234404](G:\linux_review\image-20210314130234404.png)
+
+只输入wc 显示行数、字数、字符数 和-lwm三个参数对应
+
+##### 字符转换命令
+
+tr 删除或替换
+
+col 特殊字符处理
+
+join 相同数据合并
+
+paste 同一行粘贴 以tab隔离
+
+expand tab转空格
+
+##### split 分区命令
+
+```
+split [-bl] filename DONENAME
+-b 接分区大小
+-l 按行数分区
+ split  -b 1b ~/test do
+```
+
