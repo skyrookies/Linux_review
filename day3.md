@@ -74,7 +74,7 @@ chmod	chmod u=rwx,g=rx,o=r filename
 - /lib 函式库/共享库
 - /var 内容经常变化的目录 如缓冲文件、日志文件
 
-### /user 的意义和内容
+### /usr 的意义和内容
 
 ​	FHS基本定义：可分享但不可变动的数据
 
