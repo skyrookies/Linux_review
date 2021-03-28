@@ -93,3 +93,6 @@ LISTEN和LISTENING的状态只有用-a或者-l才能看到
 应用程序可以利用 PMU，tracepoint 和内核中的特殊计数器来进行性能统计
 ```
 
+## i/o检测
+
+### iostat 命令

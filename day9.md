@@ -150,3 +150,36 @@ awk [ -F 分隔符] [ -v 变量名=值 ] 'BEGING{语句} 条件类型1{动作1} 
 [12]RS：输入记录分隔符(输入换行符)， 指定输入时的换行符
 ```
 
+### awk模式匹配
+
+#### 正则表达式匹配
+
+```
+awk [options] 'BEGIN{ action;… } pattern{ action;… } END{ action;… }' file
+在[options]输入匹配正则表达式
+```
+
+```
+  ~ cat /etc/passwd | awk '/^s/{print $0}'
+sys:x:3:3:sys:/dev:/usr/sbin/nologin
+sync:x:4:65534:sync:/bin:/bin/sync
+systemd-network:x:100:102:systemd Network Management,,,:/run/
+systemd-resolve:x:101:103:systemd Resolver,,,:/run/systemd:/usr/sbin/nologin
+systemd-timesync:x:102:104:systemd Time Synchronization,,,:/run/systemd:/usr/sbin/nologin
+syslog:x:104:110::/home/syslog:/usr/sbin/nologin
+sshd:x:109:65534::/run/sshd:/usr/sbin/nologin
+systemd-coredump:x:999:999:systemd Core Dumper:/:/usr/sbin/nologin
+```
+
+#### 匹配整行
+
+默认情况下匹配整行
+
+#### 匹配操作符 ~
+
+```
+ubuntu:x:1000:1000:Ubuntu:/home/ubuntu:/usr/bin/zsh
+➜  ~ cat /etc/passwd | awk -F ":" '$3~/1000/{print $0}'
+```
+
+对指定项匹配
